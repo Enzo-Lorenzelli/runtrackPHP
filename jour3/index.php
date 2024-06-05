@@ -212,3 +212,312 @@
   ?>
 </body>
 </html>
+
+    <!-- job 4.2 -->
+
+<?php
+// Fonction pour créer un nouveau produit
+function createProduct($name, $price, $quantity) {
+    $product = [
+        'name' => $name,
+        'price' => $price,
+        'quantity' => $quantity
+    ];
+
+    if ($price > 100) {
+        $product['discountedPrice'] = $price * 0.9; // Réduction de 10%
+    } else {
+        $product['discountedPrice'] = $price;
+    }
+
+    return $product;
+}
+
+// Fonction pour afficher un produit
+function displayProduct($product) {
+    $output = "<div>";
+    $output .= "<h3>{$product['name']}</h3>";
+    $output .= "<p>Prix: {$product['price']}€</p>";
+    if (isset($product['discountedPrice'])) {
+        $output .= "<p>Prix après réduction: {$product['discountedPrice']}€</p>";
+    }
+    $output .= "<p>Quantité: {$product['quantity']}</p>";
+    $output .= "</div>";
+
+    return $output;
+}
+
+// Création d'un tableau de produits
+$products = [
+    createProduct('Produit A', 80, 5),
+    createProduct('Produit B', 120, 3),
+    createProduct('Produit C', 95, 8),
+    createProduct('Produit D', 150, 2)
+];
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste de produits</title>
+    <style>
+        div {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Liste de produits</h1>
+    <?php
+    // Affichage de chaque produit
+    foreach ($products as $product) {
+        echo displayProduct($product);
+    }
+    ?>
+</body>
+</html>
+
+<!--- job 1.2  --->
+
+<?php
+// ------------------------ Job 01 ------------------------
+
+$variable1 = "LaPlateforme";
+echo $variable1 . "<br>";
+
+$variable2 = "Vive";
+$variable3 = "!";
+echo $variable2 . " " . $variable1 . " " . $variable3 . "<br>";
+
+$variable4 = 6;
+echo $variable4 . "<br>";
+$variable4 += 4;
+echo $variable4 . "<br>";
+
+$variable5 = true;
+echo $variable5 . "<br>";
+$variable5 = false;
+echo $variable5 . "<br>";
+
+// ------------------------ Job 02 ------------------------
+
+echo "Hello all !<br>";
+// Commentaire sur une ligne
+/* Commentaire
+   sur plusieurs
+   lignes */
+echo "Hello all !<br>";
+
+// ------------------------ Job 03 ------------------------
+
+$int = 42;
+$bool = true;
+$str = "LaPlateforme";
+$float = 3.14;
+
+echo "<table>
+        <tr>
+            <th>Type</th>
+            <th>Nom</th>
+            <th>Valeur</th>
+        </tr>
+        <tr>
+            <td>Integer</td>
+            <td>int</td>
+            <td>$int</td>
+        </tr>
+        <tr>
+            <td>Boolean</td>
+            <td>bool</td>
+            <td>$bool</td>
+        </tr>
+        <tr>
+            <td>String</td>
+            <td>str</td>
+            <td>$str</td>
+        </tr>
+        <tr>
+            <td>Float</td>
+            <td>float</td>
+            <td>$float</td>
+        </tr>
+      </table>";
+
+// ------------------------ Job 04 ------------------------
+
+for ($i = 0; $i <= 50; $i++) {
+    if ($i == 42) {
+        echo "<b><u>$i</u></b><br>";
+    } else {
+        echo $i . "<br>";
+    }
+}
+
+// ------------------------ Job 05 ------------------------
+
+for ($i = 0; $i <= 120; $i++) {
+    if ($i != 26 && $i != 37 && $i != 88 && $i != 111) {
+        echo $i . "<br>";
+    }
+}
+
+// ------------------------ Job 06 ------------------------
+
+for ($i = 0; $i <= 100; $i++) {
+    if ($i == 42) {
+        echo "La Plateforme_<br>";
+    } elseif ($i >= 0 && $i <= 20) {
+        echo "<i>$i</i><br>";
+    } elseif ($i >= 25 && $i <= 50) {
+        echo "<u>$i</u><br>";
+    } else {
+        echo $i . "<br>";
+    }
+}
+
+// ------------------------ Job 07 ------------------------
+
+for ($i = 1; $i <= 100; $i++) {
+    if ($i % 3 == 0 && $i % 5 == 0) {
+        echo "FizzBuzz<br>";
+    } elseif ($i % 3 == 0) {
+        echo "Fizz<br>";
+    } elseif ($i % 5 == 0) {
+        echo "Buzz<br>";
+    } else {
+        echo $i . "<br>";
+    }
+}
+
+?>
+
+<!------------------JOB 2.2 Job 01 -->
+
+<form method="get">
+    <input type="text" name="param1" value="Valeur 1">
+    <input type="text" name="param2" value="Valeur 2">
+    <input type="submit" value="Envoyer">
+</form>
+
+<?php
+// Affiche le nombre d'arguments $_GET
+echo "Nombre d'arguments GET : " . count($_GET) . "<br>";
+?>
+
+<!-- Job 02 -->
+<table>
+    <tr>
+        <th>Argument</th>
+        <th>Valeur</th>
+    </tr>
+    <?php
+    // Affiche les arguments $_GET dans un tableau HTML
+    foreach ($_GET as $key => $value) {
+        echo "<tr><td>$key</td><td>$value</td></tr>";
+    }
+    ?>
+</table>
+
+<!-- Job 03 -->
+<form method="post">
+    <input type="text" name="param1" value="Valeur 1">
+    <input type="text" name="param2" value="Valeur 2">
+    <input type="submit" value="Envoyer">
+</form>
+
+<?php
+// Affiche le nombre d'arguments $_POST
+echo "Nombre d'arguments POST : " . count($_POST) . "<br>";
+?>
+
+<!-- Job 04 -->
+<table>
+    <tr>
+        <th>Argument</th>
+        <th>Valeur</th>
+    </tr>
+    <?php
+    // Affiche les arguments $_POST dans un tableau HTML
+    foreach ($_POST as $key => $value) {
+        echo "<tr><td>$key</td><td>$value</td></tr>";
+    }
+    ?>
+</table>
+
+<!-- Job 05 -->
+<form method="post">
+    <label for="username">Username :</label>
+    <input type="text" name="username" id="username"><br>
+
+    <label for="password">Password :</label>
+    <input type="password" name="password" id="password"><br>
+
+    <input type="submit" value="Se connecter">
+</form>
+
+<?php
+// Vérifie les identifiants après validation du formulaire
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    if ($_POST['username'] === 'John' && $_POST['password'] === 'Rambo') {
+        echo "Ce n'est pas ma guerre";
+    } else {
+        echo "Votre pire cauchemar";
+    }
+}
+?>
+
+<!-- Job 06 -->
+<form method="get">
+    <label for="nombre">Entrez un nombre :</label>
+    <input type="number" name="nombre" id="nombre">
+    <input type="submit" value="Valider">
+</form>
+
+<?php
+// Vérifie si le nombre est pair ou impair
+if (isset($_GET['nombre'])) {
+    $nombre = $_GET['nombre'];
+    if ($nombre % 2 == 0) {
+        echo "Nombre pair";
+    } else {
+        echo "Nombre impair";
+    }
+}
+?>
+
+<!-- Job 07 -->
+<form method="get">
+    <label for="largeur">Largeur :</label>
+    <input type="number" name="largeur" id="largeur">
+    <label for="hauteur">Hauteur :</label>
+    <input type="number" name="hauteur" id="hauteur">
+    <input type="submit" value="Dessiner">
+</form>
+
+<?php
+// Affiche la maison en fonction de la largeur et la hauteur
+if (isset($_GET['largeur']) && isset($_GET['hauteur'])) {
+    $largeur = $_GET['largeur'];
+    $hauteur = $_GET['hauteur'];
+
+    // Toit
+    for ($i = 0; $i < $hauteur; $i++) {
+        echo str_repeat('&nbsp;', $largeur - $i - 1);
+        echo str_repeat('/\\', $i * 2 + 1);
+        echo "<br>";
+    }
+
+    // Corps
+    for ($i = 0; $i < $hauteur; $i++) {
+        echo str_repeat('|', 1);
+        echo str_repeat('&nbsp;', $largeur - 2);
+        echo str_repeat('|', 1);
+        echo "<br>";
+    }
+
+    // Base
+    echo str_repeat('_', $largeur);
+}
+?>
